@@ -7,11 +7,14 @@ import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import me.pzoupis.mastermind.domain.CodeMaker;
-import me.pzoupis.mastermind.domain.CodeValidator;
+import me.pzoupis.mastermind.domain.GuessScorer;
+import me.pzoupis.mastermind.interfaces.ICodeMaker;
+import me.pzoupis.mastermind.interfaces.IGame;
+import me.pzoupis.mastermind.interfaces.IGuessScorer;
 
-public class Game {
-    private CodeMaker codeMaker;
-    private CodeValidator codeValidator;
+public class Game implements IGame {
+    private ICodeMaker codeMaker;
+    private IGuessScorer codeValidator;
     private BufferedReader input;
     private int[] code;
     private int[] availableCodeItems;
@@ -21,21 +24,22 @@ public class Game {
     
     public Game() {
         codeMaker = new CodeMaker();
-        codeValidator = new CodeValidator();
+        codeValidator = new GuessScorer();
         input = new BufferedReader(new InputStreamReader(System.in));
     }
     
+    @Override
     public void playGame() {
         initializeGame();
         int[] guess;
         int[] validation;
         do {
              guess = getGuess();
-             validation = codeValidator.validate(guess);
+             validation = codeValidator.score(guess);
              if(validation[0] == 4) {
                  break;
              } else {
-                 System.out.println("RCRP: " + validation[0] + "RCWP: " + validation[1]);
+                 System.out.println("RCRP: " + validation[0] + "\tRCWP: " + validation[1]);
              }
         } while(true);
         System.out.println("You won!");

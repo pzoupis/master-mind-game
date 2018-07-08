@@ -1,17 +1,21 @@
 package me.pzoupis.mastermind.domain;
 
-public class CodeValidator {
+import me.pzoupis.mastermind.interfaces.IGuessScorer;
+
+public class GuessScorer implements IGuessScorer {
     private int[] code;
     
-    public CodeValidator() {
+    public GuessScorer() {
         
     }
     
+    @Override
     public void setCode(int[] code) {
         this.code = code;
     }
     
-    public int[] validate(int[] guess) {
+    @Override
+    public int[] score(int[] guess) {
         int[] validation = new int[2];
         int rightItemsInRightPosition = calculateRightItemsInRightPosition(guess);
         int rightItemsInWrongPosition = calculateRightItemsInWrongPosition(guess, rightItemsInRightPosition);

@@ -12,7 +12,7 @@ import org.junit.runners.Parameterized.Parameters;
 @RunWith(Parameterized.class)
 public class CodeValidatorTest {
     
-    private CodeValidator codeValidator;
+    private GuessScorer codeValidator;
     private final int[] code;
     private final int[] guess;
     private final int[] expectedValidation;
@@ -34,7 +34,7 @@ public class CodeValidatorTest {
     
     @Before
     public void setUp() {
-        codeValidator = new CodeValidator();
+        codeValidator = new GuessScorer();
     }
 
     @Test
@@ -42,7 +42,7 @@ public class CodeValidatorTest {
         int[] actualValidation;
         
         codeValidator.setCode(code);
-        actualValidation = codeValidator.validate(guess);
+        actualValidation = codeValidator.score(guess);
         
         assertArrayEquals(expectedValidation, actualValidation);
     }

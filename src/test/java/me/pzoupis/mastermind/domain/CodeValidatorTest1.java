@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 @RunWith(JUnitParamsRunner.class)
 public class CodeValidatorTest1 {
     
-    private CodeValidator codeValidator;
+    private GuessScorer codeValidator;
         
     public CodeValidatorTest1() {
         
@@ -18,7 +18,7 @@ public class CodeValidatorTest1 {
         
     @Before
     public void setUp() {
-        codeValidator = new CodeValidator();
+        codeValidator = new GuessScorer();
     }
 
     @Test
@@ -27,7 +27,7 @@ public class CodeValidatorTest1 {
         int[] actualValidation;
         
         codeValidator.setCode(code);
-        actualValidation = codeValidator.validate(guess);
+        actualValidation = codeValidator.score(guess);
         
         assertArrayEquals(expectedValidation, actualValidation);
     }

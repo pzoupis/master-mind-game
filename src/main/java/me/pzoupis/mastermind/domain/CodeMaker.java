@@ -1,6 +1,8 @@
 package me.pzoupis.mastermind.domain;
 
-public class CodeMaker {
+import me.pzoupis.mastermind.interfaces.ICodeMaker;
+
+public class CodeMaker implements ICodeMaker {
     
     public int[] generateCode() {
         int[] code = new int[4];
@@ -10,7 +12,7 @@ public class CodeMaker {
         return code;
     }
     
-    public int getRandomDigit() {
+    private int getRandomDigit() {
         return (int) (6 * Math.random() + 1); 
     }
 }
