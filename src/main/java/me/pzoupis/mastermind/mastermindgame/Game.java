@@ -18,7 +18,6 @@ public class Game implements IGame {
     private IGuessScorer codeValidator;
     private BufferedReader input;
     private int[] code;
-    private int[] availableCodeItems;
     private int retries;
     
     private int MAX_RETRIES = 10;
@@ -35,8 +34,6 @@ public class Game implements IGame {
         int[] guess;
         int[] validation;
         
-        GameConfiguration gameConfiguration = new GameConfiguration(4, 8);
-        
         do {
              guess = getGuess();
              validation = codeValidator.score(guess);
@@ -50,21 +47,14 @@ public class Game implements IGame {
     }
     
     public void initializeGame() {
-        setCode();
-        setAvailableCodeItems();
-    }
-    
-    public void configureGame(GameConfiguration gameConfiguration) {
+        GameConfiguration gameConfiguration = new GameConfiguration(4, 8);
         codeMaker.setGameConfiguration(gameConfiguration);
+        setCode();
     }
     
     public void setCode() {
         code = codeMaker.generateCode();
         codeValidator.setCode(code);
-    }
-    
-    public void setAvailableCodeItems() {
-        availableCodeItems = new int[] { 1, 2, 3, 4, 5, 6 };
     }
     
     public int[] getGuess() {
