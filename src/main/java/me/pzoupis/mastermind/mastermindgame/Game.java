@@ -11,6 +11,7 @@ import me.pzoupis.mastermind.domain.GuessScorer;
 import me.pzoupis.mastermind.interfaces.ICodeMaker;
 import me.pzoupis.mastermind.interfaces.IGame;
 import me.pzoupis.mastermind.interfaces.IGuessScorer;
+import me.pzoupis.mastermind.models.GameConfiguration;
 
 public class Game implements IGame {
     private ICodeMaker codeMaker;
@@ -33,6 +34,9 @@ public class Game implements IGame {
         initializeGame();
         int[] guess;
         int[] validation;
+        
+        GameConfiguration gameConfiguration = new GameConfiguration(4, 8);
+        
         do {
              guess = getGuess();
              validation = codeValidator.score(guess);
@@ -48,6 +52,10 @@ public class Game implements IGame {
     public void initializeGame() {
         setCode();
         setAvailableCodeItems();
+    }
+    
+    public void configureGame(GameConfiguration gameConfiguration) {
+        codeMaker.setGameConfiguration(gameConfiguration);
     }
     
     public void setCode() {

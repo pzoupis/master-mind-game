@@ -38,7 +38,7 @@ public class GuessScorer implements IGuessScorer {
         int count = 0;
         int occurrencesInCode;
         int occurrencesInGuess;
-        for(int i = 1; i <= 6; i++) {
+        for(int i = 1; i <= 8; i++) {
             occurrencesInCode = countOccurrences(code, i);
             occurrencesInGuess = countOccurrences(guess, i);
             count += Math.min(occurrencesInCode, occurrencesInGuess);

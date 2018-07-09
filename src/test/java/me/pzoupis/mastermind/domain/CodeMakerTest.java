@@ -1,37 +1,31 @@
 package me.pzoupis.mastermind.domain;
 
-import org.junit.After;
-import org.junit.AfterClass;
+import me.pzoupis.mastermind.models.GameConfiguration;
+import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class CodeMakerTest {
+    
+    private CodeMaker codeMaker;
     
     public CodeMakerTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
     @Before
     public void setUp() {
+        codeMaker = new CodeMaker();
     }
     
-    @After
-    public void tearDown() {
-    }
-
     @Test
-    public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        assertTrue(true);
+    public void testGenerateCode() {
+        int expectedLength = 4;
+        int[] code;
+        GameConfiguration gameConfiguration = new GameConfiguration(expectedLength, 8);
+        
+        codeMaker.setGameConfiguration(gameConfiguration);
+        code = codeMaker.generateCode();
+        
+        Assert.assertEquals(expectedLength, code.length);
     }
-    
 }

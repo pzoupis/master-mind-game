@@ -8,11 +8,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(JUnitParamsRunner.class)
-public class CodeValidatorTest1 {
+public class CodeValidator2Test {
     
     private GuessScorer codeValidator;
         
-    public CodeValidatorTest1() {
+    public CodeValidator2Test() {
         
     }
         
