@@ -47,7 +47,7 @@ public class Game implements IGame {
     }
     
     public void initializeGame() {
-        GameConfiguration gameConfiguration = new GameConfiguration(4, 8);
+        GameConfiguration gameConfiguration = new GameConfiguration(4, 8, true);
         codeMaker.setGameConfiguration(gameConfiguration);
         setCode();
     }
