@@ -21,7 +21,7 @@ public class CodeMakerTest {
     public void testGenerateCode() {
         int expectedLength = 4;
         int[] code;
-        GameConfiguration gameConfiguration = new GameConfiguration(expectedLength, 8);
+        GameConfiguration gameConfiguration = new GameConfiguration(expectedLength, 8, true);
         
         codeMaker.setGameConfiguration(gameConfiguration);
         code = codeMaker.generateCode();
