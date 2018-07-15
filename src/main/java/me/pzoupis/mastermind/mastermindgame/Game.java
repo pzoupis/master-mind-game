@@ -18,10 +18,7 @@ public class Game implements IGame {
     private IGuessScorer codeValidator;
     private BufferedReader input;
     private int[] code;
-    private int retries;
-    
-    private int MAX_RETRIES = 10;
-    
+        
     public Game() {
         codeMaker = new CodeMaker();
         codeValidator = new GuessScorer();
